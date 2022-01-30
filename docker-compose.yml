@@ -90,8 +90,20 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
     volumes:
-      - ${ROOT}:/config
-      - ${ROOT}:/music #optional
-      - ${ROOT}:/downloads #optional
+      - ${ROOT}/config/lidarr:/config
+      - ${ROOT}/music:/music #optional
+      - ${ROOT}/complete/Music:/downloads #optional
     network_mode: host
     restart: unless-stopped
+
+  organizr:
+    image: ghcr.io/organizr/organizr
+    container_name: organizr
+    environment:
+      - PUID=${PGID}
+      - PGID=${PGID}
+      - fpm="false"
+    volumes:
+      - ${ROOT}/config/organizr:/config
+    ports:
+      - 8117:80

@@ -10,6 +10,7 @@ This file will install the following
 - Sonarr
 - Radarr
 - Lidarr
+- Organizr
 
 import docker-compose.yml and example.env to your machine.  rename example.env to .env and add your personal flavor
 then run 
